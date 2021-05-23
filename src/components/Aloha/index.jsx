@@ -14,12 +14,12 @@ class Aloha extends Component {
     });
   };
   render() {
-    const { name = "React", surname } = this.props;
+    const { name = "React" } = this.props;
     const { isGreeting } = this.state;
     return (
       <>
         <h1 className="heading">
-          {isGreeting ? "Hello" : "Goodbye"}, {name} {surname}
+          {isGreeting ? "Hello" : "Goodbye"}, {name}
         </h1>
         <button onClick={this.switchState}>Switch</button>
       </>
