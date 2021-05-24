@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import UserCard from './UserCard';
+import React, { Component } from "react";
+import UserCard from "./UserCard";
 
 const usersDB = [
   {
@@ -22,26 +22,29 @@ const usersDB = [
     firstname: "Mary",
     lastname: "Black",
   },
-]
+];
 
 class UserList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: usersDB,
-    }
+      users: usersDB.map((user) => ({ 
+        ...user, 
+        isSelected: false,
+      })),
+    };
   }
 
-  mapUser = (user) => <UserCard user={user}/>
+  mapUser = (user) => <UserCard key={user.id} user={user} />;
 
   render() {
-    const {users} = this.state;
+    const { users } = this.state;
     return (
-    <section>
-      <h1>USER LIST FROM DB</h1>
-      {users.map(this.mapUser)}
-    </section>
-    )
+      <section>
+        <h1>USER LIST FROM DB</h1>
+        {users.map(this.mapUser)}
+      </section>
+    );
   }
 }
 

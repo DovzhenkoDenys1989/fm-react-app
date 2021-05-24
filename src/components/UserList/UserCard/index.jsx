@@ -3,6 +3,8 @@ const UserCard = (props) => {
     user: { id, firstname, lastname },
   } = props;
 
+  
+
   return (
     <article>
       <p>ID: {id}</p>
