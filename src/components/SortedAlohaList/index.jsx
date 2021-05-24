@@ -20,10 +20,10 @@ class SortedAlohaList extends Component {
     });
   };
   render() {
-    const { users } = this.props;
+    const { users, setUsers } = this.props;
     return (
       <>
-        <AlohaList users={users} />
+        <AlohaList users={users} setUsers={setUsers} />
         <button onClick={this.sortUsers}>Change Sort Type</button>
       </>
     );
