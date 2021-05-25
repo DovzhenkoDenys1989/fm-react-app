@@ -1,44 +1,24 @@
 import React, { Component } from "react";
 import UserCard from "./UserCard";
 
-const usersDB = [
-  {
-    id: 1,
-    firstname: "John",
-    lastname: "Smith",
-  },
-  {
-    id: 2,
-    firstname: "Bob",
-    lastname: "Brown",
-  },
-  {
-    id: 3,
-    firstname: "Sara",
-    lastname: "Smith",
-  },
-  {
-    id: 4,
-    firstname: "Mary",
-    lastname: "Black",
-  },
-];
-
 class UserList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: usersDB.map((user) => ({ 
-        ...user, 
-        isSelected: false,
-      })),
-    };
-  }
+  toggleUserSelection = (id) => {
+    const { users, setUsers } = this.props;
 
-  mapUser = (user) => <UserCard key={user.id} user={user} />;
+    setUsers(
+      users.map((user) => ({
+        ...user,
+        isSelected: user.id === id ? !user.isSelected : user.isSelected,
+      }))
+    );
+  };
+
+  mapUser = (user) => {
+    return <UserCard key={user.id} user={user} toggleUserSelection={this.toggleUserSelection} />;
+  };
 
   render() {
-    const { users } = this.state;
+    const { users } = this.props;
     return (
       <section>
         <h1>USER LIST FROM DB</h1>

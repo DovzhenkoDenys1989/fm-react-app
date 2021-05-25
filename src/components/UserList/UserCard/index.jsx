@@ -1,12 +1,16 @@
 const UserCard = (props) => {
   const {
     user: { id, firstname, lastname },
+    toggleUserSelection,
   } = props;
 
-  
+  const handleClick = () => {
+    console.log(props);
+    toggleUserSelection(id);
+  };
 
   return (
-    <article>
+    <article onClick={handleClick}>
       <p>ID: {id}</p>
       <h1>
         User Name: {firstname} {lastname}
