@@ -1,35 +1,22 @@
-import { Component } from "react";
+import React, { useState } from "react";
 
-class Aloha extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isGreeting: true,
-    };
-  }
-  switchState = () => {
-    const { isGreeting } = this.state;
-    this.setState({
-      isGreeting: !isGreeting,
-    });
-  };
-  deleteGreetingUser = () => {
-    const { users, id, setUsers } = this.props;
+function Aloha(props) {
+  const [isGreeting, setIsGreeting] = useState(true);
+  const switchState = () => setIsGreeting(!isGreeting);
+  const deleteGreetingUser = () => {
+    const { users, id, setUsers } = props;
     setUsers(users.filter((user) => user.id !== id));
   };
-  render() {
-    const { name = "React" } = this.props;
-    const { isGreeting } = this.state;
-    return (
-      <>
-        <h1 className="heading">
-          {isGreeting ? "Hello" : "Goodbye"}, {name}
-        </h1>
-        <button onClick={this.switchState}>Switch</button>
-        <button onClick={this.deleteGreetingUser}>Delete</button>
-      </>
-    );
-  }
+  const { name = "React" } = props;
+  return (
+    <>
+      <h1 className="heading">
+        {isGreeting ? "Hello" : "Goodbye"}, {name}
+      </h1>
+      <button onClick={switchState}>Switch</button>
+      <button onClick={deleteGreetingUser}>Delete</button>
+    </>
+  );
 }
 
 export default Aloha;

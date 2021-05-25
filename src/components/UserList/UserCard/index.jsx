@@ -3,15 +3,15 @@ const UserCard = (props) => {
     user: { id, firstname, lastname, isSelected },
     toggleUserSelection,
   } = props;
-
-  const handleClick = () => {
-    toggleUserSelection(id);
-  };
   const style = {
     border: isSelected ? "5px solid black" : undefined,
+    color: isSelected ? "green" : "gray",
   };
   return (
-    <article onClick={handleClick} style={style}>
+    <article 
+      onClick={() => toggleUserSelection(id)} 
+      style={style}>
+      className={`userCard ${isSelected ? 'selected' : ''}`}
       <p>ID: {id}</p>
       <h1>
         User Name: {firstname} {lastname}

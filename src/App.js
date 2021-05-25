@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component } from 'react'
+import React, { useState } from "react";
 import SelectedUserList from "./components/SelectedUserList";
 import UserList from "./components/UserList";
 
@@ -26,39 +26,29 @@ const usersDB = [
   },
 ];
 
-/*function App() {
+/*
+  Перепишите Aloha, App как функциональные компоненты
+*/
+
+function App(props) {
+  const defaultUsers = usersDB.map((user) => ({
+    ...user,
+    isSelected: false,
+  }));
+  const [users, setUsers] = useState(defaultUsers);
+  const [isHidden, setIsHidden] = useState(false);
+  const hideHandler = () => setIsHidden(!isHidden);
   return (
-    <UserList/>
-    )
-}*/
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: usersDB.map((user) => ({ 
-        ...user, 
-        isSelected: false,
-      })),
-    };
-  }
-
-  setUsers = (newUsers) => this.setState({ users: newUsers});
-
-  render() {
-    const {users} = this.state;
-    return (
     <>
       <header>
         <SelectedUserList users={users} />
       </header>
       <main>
-        <UserList users={users} setUsers={this.setUsers}/>
-    </main>
+        <button onClick={hideHandler}>Hide</button>
+        {!isHidden && <UserList users={users} setUsers={setUsers} />}
+      </main>
     </>
-    )
-  }
+  );
 }
-
 
 export default App;

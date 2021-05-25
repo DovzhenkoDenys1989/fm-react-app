@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import UserCard from "./UserCard";
 
 class UserList extends Component {
+  componentDidMount() {
+    console.log("Did mount");
+  }
+  componentDidUpdate() {
+    console.log("Did update");
+  }
+  componentWillUnmount() {
+    console.log("Will unmount");
+  }
   toggleUserSelection = (id) => {
     const { users, setUsers } = this.props;
 
@@ -12,11 +21,15 @@ class UserList extends Component {
       }))
     );
   };
-
   mapUser = (user) => {
-    return <UserCard key={user.id} user={user} toggleUserSelection={this.toggleUserSelection} />;
+    return (
+      <UserCard
+        key={user.id}
+        user={user}
+        toggleUserSelection={this.toggleUserSelection}
+      />
+    );
   };
-
   render() {
     const { users } = this.props;
     return (
