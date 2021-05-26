@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import SelectedUserList from "./components/SelectedUserList";
 import UserList from "./components/UserList";
+import Timer from "./components/Timer";
 
 const usersDB = [
   {
@@ -46,6 +47,7 @@ function App(props) {
       <main>
         <button onClick={hideHandler}>Hide</button>
         {!isHidden && <UserList users={users} setUsers={setUsers} />}
+        <Timer />
       </main>
     </>
   );
