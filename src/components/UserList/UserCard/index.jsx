@@ -8,10 +8,11 @@ const UserCard = (props) => {
     color: isSelected ? "green" : "gray",
   };
   return (
-    <article 
-      onClick={() => toggleUserSelection(id)} 
-      style={style}>
-      className={`userCard ${isSelected ? 'selected' : ''}`}
+    <article
+      onClick={() => toggleUserSelection(id)}
+      style={style}
+      className={`userCard ${isSelected ? "selected" : ""}`}
+    >
       <p>ID: {id}</p>
       <h1>
         User Name: {firstname} {lastname}

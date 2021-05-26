@@ -1,9 +1,9 @@
 import React from "react";
-import "./style.css";
+import style from "./Button.module.css";
 
 function Button(props) {
   const { caption, handler } = props;
-  return <button onClick={handler}>{caption}</button>;
+  return <button className={style.blueBtn} onClick={handler}>{caption}</button>;
 }
 
 export default Button;

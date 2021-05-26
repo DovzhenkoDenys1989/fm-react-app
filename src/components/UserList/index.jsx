@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserCard from "./UserCard";
+import style from"./UserList.module.css";
 
 class UserList extends Component {
   componentDidMount() {
@@ -33,7 +34,7 @@ class UserList extends Component {
   render() {
     const { users } = this.props;
     return (
-      <section>
+      <section className={style.container}>
         <h1>USER LIST FROM DB</h1>
         {users.map(this.mapUser)}
       </section>
