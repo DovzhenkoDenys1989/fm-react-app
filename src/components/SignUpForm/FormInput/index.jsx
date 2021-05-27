@@ -3,7 +3,7 @@ import cx from 'classnames';
 import style from "./FormInput.module.css";
 
 export default function FormInput(props) {
-  const {value, onChange, isValid, placeholder, type = "text"} = props;
+  const {value, onChange = () => {}, isValid, placeholder, type = "text"} = props;
   return (
     <input
       value={value}
