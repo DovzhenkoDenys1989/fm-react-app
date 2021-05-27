@@ -6,7 +6,6 @@ class SignUpForm extends Component {
     event.preventDefault();
     console.log(event);
     const {
-      target,
       target: {
         elements: {
           firstname: { value: firstname },
