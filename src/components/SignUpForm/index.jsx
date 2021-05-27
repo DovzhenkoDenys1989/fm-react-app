@@ -2,33 +2,30 @@ import React, { Component } from "react";
 import style from "./SignUpForm.module.css";
 
 const initialValues = {
-  firstname: '',
-  lastname: '',
-  email: '',
-  password: '',
-}
+  firstname: "",
+  lastname: "",
+  email: "",
+  password: "",
+};
 
 class SignUpForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {...initialValues}
-
-
+    this.state = { ...initialValues };
   }
   submitHandler = (event) => {
-    const {registerUser} = this.props;
+    const { registerUser } = this.props;
     event.preventDefault();
-    console.log(event);
-    registerUser(this.state);
-    this.setState({...initialValues})
+    registerUser({ ...this.state });
+    this.setState({ ...initialValues });
   };
 
-  handleChange = ({target: {name, value}}) => {
-    this.setState({[name]: value});
-  }
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
 
   render() {
-    const {firstname, lastname, email, password} = this.state;
+    const { firstname, lastname, email, password } = this.state;
     return (
       <form className={style.container} onSubmit={this.submitHandler}>
         <input
