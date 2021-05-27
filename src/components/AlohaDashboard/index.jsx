@@ -1,6 +1,6 @@
 import { Component } from "react";
 import SortedAlohaList from "./SortedAlohaList";
-
+import SignUpForm from "../SignUpForm";
 
 class AlohaDashboard extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class AlohaDashboard extends Component {
       0
     );
     newUsersArray.push({ ...user, id: lastId + 1 });
-    setUsers(newUsersArray);
+    this.setUsers(newUsersArray);
   };
 
   render() {
@@ -53,7 +53,7 @@ class AlohaDashboard extends Component {
     return (
       <>
         <SortedAlohaList users={users} setUsers={this.setUsers} />
-        <SignUpForm registerUser={registerUser} />
+        <SignUpForm registerUser={this.registerUser} />
       </>
     );
   }
