@@ -41,6 +41,11 @@ function Timer(props) {
     setDiff(Date.now() - startTime);
   };
 
+  const resume = () => {
+    setIsRunning(true);
+    setStartTime(Date.now() - diff);
+  };
+
   const reset = () => {
     setIsRunning(false);
     setStartTime(null);
@@ -55,11 +60,6 @@ function Timer(props) {
       isHidden: true,
       handler: pause,
     });
-  };
-
-  const resume = () => {
-    setIsRunning(true);
-    setStartTime(Date.now() - diff);
   };
 
   const [isRunning, setIsRunning] = useState(false);
