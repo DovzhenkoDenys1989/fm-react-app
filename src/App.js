@@ -2,7 +2,8 @@ import "./App.css";
 import React, { useState } from "react";
 import SelectedUserList from "./components/SelectedUserList";
 import UserList from "./components/UserList";
-import Timer from "./components/Timer";
+import Timer from "./components/FuncTimer";
+import Counter from "./components/Counter";
 
 const usersDB = [
   {
@@ -46,8 +47,9 @@ function App(props) {
       </header>
       <main>
         <button onClick={hideHandler}>Hide</button>
-        {!isHidden && <UserList users={users} setUsers={setUsers} />}
+        {/*!isHidden && <UserList users={users} setUsers={setUsers} />*/}
         <Timer />
+        {!isHidden && <Counter />}
       </main>
     </>
   );
