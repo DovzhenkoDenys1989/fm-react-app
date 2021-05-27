@@ -2,8 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import SelectedUserList from "./components/SelectedUserList";
 import UserList from "./components/UserList";
-import Timer from "./components/FuncTimer";
-import Counter from "./components/Counter";
+import AlohaDashboard from "./components/AlohaDashboard";
 
 const usersDB = [
   {
@@ -40,16 +39,16 @@ function App(props) {
   const [users, setUsers] = useState(defaultUsers);
   const [isHidden, setIsHidden] = useState(false);
   const hideHandler = () => setIsHidden(!isHidden);
+
   return (
     <>
       <header>
         <SelectedUserList users={users} />
       </header>
       <main>
+        <AlohaDashboard />
         <button onClick={hideHandler}>Hide</button>
-        {/*!isHidden && <UserList users={users} setUsers={setUsers} />*/}
-        <Timer />
-        {!isHidden && <Counter />}
+        <UserList users={users} setUsers={setUsers} />
       </main>
     </>
   );
