@@ -3,8 +3,9 @@ import cx from 'classnames';
 import style from "./FormInput.module.css";
 
 export default function FormInput(props) {
-  const {name, value, onChange = () => {}, validationHandler = () => {}, placeholder, type = "text"} = props;
-  const isValid = validationHandler(value);
+  const {name, value, onChange = () => {}, validationRegex, placeholder, type = "text"} = props;
+  const isValid = value.length === 0 || validationRegex.test(value);
+  console.log(name, isValid);
   return (
     <input
       name={name}

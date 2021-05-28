@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import cx from "classnames";
 import style from "./SignUpForm.module.css";
 import FormInput from "./FormInput";
+import * as constants from "../../constants";
 
 const initialValues = {
   firstname: "",
@@ -23,33 +23,43 @@ class SignUpForm extends Component {
   };
 
   handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value, [`is${name}Valid`]: !value.includes(" ") });
+    this.setState({ [name]: value });
   };
 
-  validateName = (value) => {
-    return true;
-  }
-  validateEmail = (value) => {
-    return true;
-  }
-  validatePassword = (value) => {
-    const regex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g
-    return value.length === 0 || regex.test(value);
-  };
-  
   render() {
-    const {
-      firstname,
-      lastname,
-      email,
-      password,
-    } = this.state;
+    const { firstname, lastname, email, password } = this.state;
     return (
       <form className={style.container} onSubmit={this.submitHandler}>
-        <FormInput name="firstname" value={firstname} onChange={this.handleChange} validationHandler={this.validateName} placeholder="Введите имя" />
-        <FormInput name="lastname" value={lastname} onChange={this.handleChange} validationHandler={this.validateName} placeholder="Введите фамилию" />
-        <FormInput name="email" value={email} onChange={this.handleChange} validationHandler={this.validateEmail} placeholder="Введите email" type="email" />
-        <FormInput name="password" value={password} onChange={this.handleChange} validationHandler={this.validatePassword} placeholder="Введите пароль" type="password" />
+        <FormInput
+          name="firstname"
+          value={firstname}
+          onChange={this.handleChange}
+          validationRegex={constants.REGEX_NAME}
+          placeholder="Введите имя"
+        />
+        <FormInput
+          name="lastname"
+          value={lastname}
+          validationRegex={constants.REGEX_NAME}
+          onChange={this.handleChange}
+          placeholder="Введите фамилию"
+        />
+        <FormInput
+          name="email"
+          value={email}
+          validationRegex={constants.REGEX_EMAIL}
+          onChange={this.handleChange}
+          placeholder="Введите email"
+          type="email"
+        />
+        <FormInput
+          name="password"
+          value={password}
+          validationRegex={constants.REGEX_PASSWORD}
+          onChange={this.handleChange}
+          placeholder="Введите пароль"
+          type="password"
+        />
         <input className={style.input} type="submit" />
       </form>
     );
