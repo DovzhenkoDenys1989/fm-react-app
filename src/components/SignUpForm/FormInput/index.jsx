@@ -1,6 +1,6 @@
 import React from "react";
 import cx from 'classnames';
-import style from "./FormInput.module.css";
+import style from "./FormInput.module.scss";
 
 export default function FormInput(props) {
   const {name, value, onChange = () => {}, validationRegex, placeholder, type = "text"} = props;
