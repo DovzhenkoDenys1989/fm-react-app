@@ -1,6 +1,7 @@
+@import '../../common/templates.scss';
+
 .container {
-  display: flex;
-  flex-direction: column;
+  @extend %flex-column;
   max-width: 600px;
   border: 5px solid black;
   padding: 30px;

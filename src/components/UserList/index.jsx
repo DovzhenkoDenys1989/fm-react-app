@@ -1,17 +1,8 @@
 import React, { Component } from "react";
 import UserCard from "./UserCard";
-import style from"./UserList.module.css";
+import style from"./UserList.module.scss";
 
 class UserList extends Component {
-  /*componentDidMount() {
-    console.log("Did mount");
-  }
-  componentDidUpdate() {
-    console.log("Did update");
-  }
-  componentWillUnmount() {
-    console.log("Will unmount");
-  }*/
   toggleUserSelection = (id) => {
     const { users, setUsers } = this.props;
 

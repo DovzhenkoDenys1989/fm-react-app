@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import style from "./SignUpForm.module.css";
+import style from "./SignUpForm.module.scss";
 import FormInput from "./FormInput";
 import * as constants from "../../constants";
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "../Button";
 import Controls from "./Controls";
 import TimerDisplay from "./TimerDisplay";
-import style from "./Timer.module.css";
+import style from "./Timer.module.scss";
 
 class Timer extends Component {
   constructor(props) {
