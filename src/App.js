@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import SelectedUserList from "./components/SelectedUserList";
 import UserList from "./components/UserList";
 import AlohaDashboard from "./components/AlohaDashboard";
+import Aloha from "./components/AlohaDashboard/Aloha";
+import UserCard from "./components/UserList/UserCard";
 
 const usersDB = [
   {
@@ -32,24 +34,14 @@ const usersDB = [
 */
 
 function App(props) {
-  const defaultUsers = usersDB.map((user) => ({
-    ...user,
-    isSelected: false,
-  }));
-  const [users, setUsers] = useState(defaultUsers);
-  const [isHidden, setIsHidden] = useState(false);
-  const hideHandler = () => setIsHidden(!isHidden);
-
+  const user = {
+    id: 4,
+    firstname: "Mary",
+    lastname: "Black",
+  };
   return (
     <>
-      <header>
-        <SelectedUserList users={users} />
-      </header>
-      <main>
-        <AlohaDashboard />
-        <button onClick={hideHandler}>Hide</button>
-        <UserList users={users} setUsers={setUsers} />
-      </main>
+      <UserCard user={user}/>
     </>
   );
 }

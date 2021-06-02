@@ -118,10 +118,10 @@ class Timer extends Component {
         <h2>{name}</h2>
         <TimerDisplay currentTime={currentTime} />
         <Controls>
-          <Button handler={startButton.handler} caption={startButton.caption} />
+          <Button onClick={startButton.handler} caption={startButton.caption} />
           {!pauseButton.isHidden && (
             <Button
-              handler={pauseButton.handler}
+              onClick={pauseButton.handler}
               caption={pauseButton.caption}
             />
           )}
