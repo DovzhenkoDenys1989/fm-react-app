@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./ResponsiveMediaWrapper.module.sass";
 import cx from "classnames";
+import PropTypes from 'prop-types';
 
 function ResponsiveMediaWrapper({ className, children, ...restProps }) {
   return (
@@ -10,6 +11,11 @@ function ResponsiveMediaWrapper({ className, children, ...restProps }) {
       </div>
     </div>
   );
+}
+
+ResponsiveMediaWrapper.propTypes = {
+  className: PropTypes.string,
+  children:PropTypes.element,
 }
 
 export default ResponsiveMediaWrapper;
