@@ -5,6 +5,7 @@ import UserList from "./components/UserList";
 import AlohaDashboard from "./components/AlohaDashboard";
 import Aloha from "./components/AlohaDashboard/Aloha";
 import UserCard from "./components/UserList/UserCard";
+import ResponsiveMediaWrapper from "./components/ResponsiveMediaWrapper";
 
 const usersDB = [
   {
@@ -42,6 +43,14 @@ function App(props) {
   return (
     <>
       <UserCard user={user}/>
+      <div style={{with: '50%'}}>
+      <ResponsiveMediaWrapper> 
+      <img
+          src="https://cdn.wallpapersafari.com/78/72/HhMJ6K.jpg"
+          alt="image"
+        />   
+      </ResponsiveMediaWrapper>
+      </div>
     </>
   );
 }
