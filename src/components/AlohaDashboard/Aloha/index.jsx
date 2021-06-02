@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 
 function Aloha(props) {
   const [isGreeting, setIsGreeting] = useState(true);
@@ -7,7 +8,7 @@ function Aloha(props) {
     const { users, id, setUsers } = props;
     setUsers(users.filter((user) => user.id !== id));
   };
-  const { name = "React" } = props;
+  const { name } = props;
   return (
     <>
       <h1 className="heading">
@@ -18,5 +19,9 @@ function Aloha(props) {
     </>
   );
 }
+
+Aloha.propTypes = {
+  name: PropTypes.string
+};
 
 export default Aloha;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import UserCard from "./UserCard";
+import PropTypes from 'prop-types';
+import UserCard, {userPropType} from "./UserCard";
 import style from"./UserList.module.scss";
 
 class UserList extends Component {
@@ -31,6 +32,11 @@ class UserList extends Component {
       </section>
     );
   }
+}
+
+UserList.propTypes = {
+  setUsers: PropTypes.func,
+  users: PropTypes.arrayOf(userPropType)
 }
 
 export default UserList;
