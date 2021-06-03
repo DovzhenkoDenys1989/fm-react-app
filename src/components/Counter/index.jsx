@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-function Counter(props) {
+function Counter (props) {
   const [counter, setCounter] = useState(0);
   const [step, setStep] = useState(1);
 
   useEffect(() => {
-    console.log("used effect");
-    return () => console.log("unmount");
+    console.log('used effect');
+    return () => console.log('unmount');
   }, [step]);
 
   return (

@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 
-const UserCard = (props) => {
+const UserCard = props => {
   const {
     user: { id, firstname, lastname, isSelected },
     toggleUserSelection,
   } = props;
   const style = {
-    border: isSelected ? "5px solid black" : undefined,
-    color: isSelected ? "green" : "gray",
+    border: isSelected ? '5px solid black' : undefined,
+    color: isSelected ? 'green' : 'gray',
   };
   return (
     <article
       onClick={() => toggleUserSelection(id)}
       style={style}
-      className={`userCard ${isSelected ? "selected" : ""}`}
+      className={`userCard ${isSelected ? 'selected' : ''}`}
     >
       <p>ID: {id}</p>
       <h1>
@@ -24,13 +24,13 @@ const UserCard = (props) => {
 };
 
 UserCard.defaultProps = {
-  toggleUserSelection: () => {}, 
-  user: { 
+  toggleUserSelection: () => {},
+  user: {
     id: null,
     firstname: 'Anon',
     lastname: 'Anon',
   },
-}
+};
 
 export const userPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -41,6 +41,6 @@ export const userPropType = PropTypes.shape({
 UserCard.propTypes = {
   user: userPropType,
   toggleUserSelection: PropTypes.func,
-}
+};
 
 export default UserCard;

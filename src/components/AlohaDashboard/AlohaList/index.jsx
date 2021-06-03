@@ -1,7 +1,7 @@
-import Aloha from "../Aloha";
+import Aloha from '../Aloha';
 
-function AlohaList({ users, setUsers }) {
-  const createUserGreetings = (users) =>
+function AlohaList ({ users, setUsers }) {
+  const createUserGreetings = users =>
     users.map(({ id, firstname, lastname }, index) => (
       <li key={id}>
         <Aloha
