@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Spinner from '../Spinner';
 
 export default class UserLoader extends Component {
   constructor (props) {
@@ -25,7 +26,7 @@ export default class UserLoader extends Component {
   render () {
     const { users, isFetching, error } = this.state;
 
-    if(isFetching) return <div>LOADING...</div>
+    if(isFetching) return <Spinner />
     if(error) return <div>ERROR!</div>
 
     return (
