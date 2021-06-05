@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from '../Spinner';
-import {getUsers} from '../../api';
-
+import { getUsers } from '../../api';
 
 export default class UserLoader extends Component {
   constructor (props) {
@@ -10,12 +9,13 @@ export default class UserLoader extends Component {
       users: [],
       isFetching: true,
       error: null,
+      currentPage: 1,
     };
   }
 
-  componentDidMount () {
-    // https://randomuser.me/api/?page=3&results=10&seed=fm2021-1
-    getUsers()
+  load = () => {
+    const { currentPage } = this.state;
+    getUsers({ page: currentPage })
       .then(data => {
         this.setState({
           users: data.results,
@@ -23,23 +23,43 @@ export default class UserLoader extends Component {
       })
       .catch(error => this.setState({ error }))
       .finally(() => this.setState({ isFetching: false }));
+  };
+
+  componentDidMount () {
+    this.load();
   }
+
+  componentDidUpdate (prevProps, prevState) {
+    const { currentPage } = this.state;
+    if (prevState.currentPage !== currentPage) {
+      this.load();
+    }
+  }
+
+  /*
+    TASK
+    Реализовать функционал кнопки Prev page
+  */
+
+  nextPage = () => this.setState({ currentPage: this.state.currentPage + 1 });
 
   render () {
     const { users, isFetching, error } = this.state;
 
-    if(isFetching) return <Spinner />
-    if(error) return <div>ERROR!</div>
+    if (isFetching) return <Spinner />;
+    if (error) return <div>ERROR!</div>;
 
     return (
-    <div>
-      <h1>USER LIST</h1>
-      <ul>
-        {users.map(user => (
-          <li key={user.login.uuid}>{JSON.stringify(user)}</li>
-        ))}
-      </ul>
-    </div>
+      <div>
+        <h1>USER LIST</h1>
+        <button>Prev page</button>
+        <button onClick={this.nextPage}>Next page</button>
+        <ul>
+          {users.map(user => (
+            <li key={user.login.uuid}>{JSON.stringify(user)}</li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }
