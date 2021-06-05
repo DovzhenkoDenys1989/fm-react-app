@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Spinner from '../Spinner';
+import {getUsers} from '../../api';
+
 
 export default class UserLoader extends Component {
   constructor (props) {
@@ -12,8 +14,8 @@ export default class UserLoader extends Component {
   }
 
   componentDidMount () {
-    fetch('https://randomuser.me/api/')
-      .then(res => res.json())
+    // https://randomuser.me/api/?page=3&results=10&seed=fm2021-1
+    getUsers()
       .then(data => {
         this.setState({
           users: data.results,
