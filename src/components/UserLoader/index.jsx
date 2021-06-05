@@ -40,7 +40,12 @@ export default class UserLoader extends Component {
     TASK
     Реализовать функционал кнопки Prev page
   */
-
+  prevPage = () => {
+    const { currentPage } = this.state;
+    if(currentPage > 1){
+    this.setState({ currentPage: this.state.currentPage - 1 });
+    }
+  };
   nextPage = () => this.setState({ currentPage: this.state.currentPage + 1 });
 
   render () {
@@ -52,7 +57,7 @@ export default class UserLoader extends Component {
     return (
       <div>
         <h1>USER LIST</h1>
-        <button>Prev page</button>
+        <button onClick={this.prevPage}>Prev page</button>
         <button onClick={this.nextPage}>Next page</button>
         <ul>
           {users.map(user => (
