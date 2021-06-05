@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import UserLoader from './components/UserLoader';
+import WindowSizes from './components/WindowSizes';
 
 const usersDB = [
   {
@@ -32,6 +33,7 @@ const usersDB = [
 function App (props) {
   return (
     <>
+      <WindowSizes />
       <UserLoader /> 
     </>
   );
