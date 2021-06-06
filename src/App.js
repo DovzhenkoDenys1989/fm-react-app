@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import UserLoader from './components/UserLoader';
 import WindowSizes from './components/WindowSizes';
+import Counter from './components/PracticeCounter/Counter';
 
 const usersDB = [
   {
@@ -33,8 +34,9 @@ const usersDB = [
 function App (props) {
   return (
     <>
-      <WindowSizes />
-      <UserLoader /> 
+      {/*<WindowSizes />
+      <UserLoader /> */}
+      <Counter />
     </>
   );
 }
