@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Link, Router } from 'react-router-dom';
 import UserLoader from './components/UserLoader';
 import WindowSizes from './components/WindowSizes';
 import Counter from './components/PracticeCounter/Counter';
+import CounterPage from './pages/CounterPage';
 
 function App (props) {
   return (
@@ -19,6 +20,9 @@ function App (props) {
           <li>
             <Link to='/about'>About</Link>
           </li>
+          <li>
+            <Link to='/counter'>Counter</Link>
+          </li>
         </ul>
       </nav>
 
@@ -30,8 +34,8 @@ function App (props) {
           <Contacts />
         </Route>
         <Route path='/about' component={About} />
-        <Route path='*' component={NotFound}>
-        </Route>
+        <Route path='/counter' component={CounterPage} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </BrowserRouter>
   );

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Button from "../Button";
 import ControlledNumInput from "../ControlledNumInput";
-import Step from "./Step";
 
 import style from "./Counter.module.sass";
 
 function Counter(props) {
+  const { step } = props;
+
   const toggleMode = () => setIsIncrement(!isIncrement);
   const toggleAutoClick = () => setIsAutoClick(!isAutoClick);
 
@@ -18,7 +19,6 @@ function Counter(props) {
   };
 
   const [counter, setCounter] = useState(0);
-  const [step, setStep] = useState(1);
   const [isIncrement, setIsIncrement] = useState(true);
   const [isAutoClick, setIsAutoClick] = useState(false);
   const [delay, setDelay] = useState(1000);
@@ -40,7 +40,6 @@ function Counter(props) {
     <>
       <div className={style.container}>
         <div>Counter:{counter}</div>
-        <Step step={step} setStep={setStep} />
         <ControlledNumInput
           caption="Количество нажатий в секунду (Press Enter)"
           value={clicksPerSecond}
@@ -50,9 +49,9 @@ function Counter(props) {
         />
         <p>Auto click mode: {isAutoClick ? "Enabled" : "Disabled"}</p>
         <div className={style.controls}>
-          <Button handler={toggleMode} caption={"Change mode"} />
-          <Button handler={handleCount} caption={countButtonCaption} />
-          <Button handler={toggleAutoClick} caption="Auto click" />
+          <Button onClick={toggleMode} caption={"Change mode"} />
+          <Button onClick={handleCount} caption={countButtonCaption} />
+          <Button onClick={toggleAutoClick} caption="Auto click" />
         </div>
       </div>
     </>

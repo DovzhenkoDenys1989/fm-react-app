@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import style from "./Step.module.sass";
-import ControlledNumInput from "../ControlledNumInput";
-function Step(props) {
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import style from './Step.module.sass';
+import ControlledNumInput from '../../../components/ControlledNumInput';
+function Step (props) {
   const { step, setStep } = props;
   return (
     <>
       <div>Step: {step}</div>
       <ControlledNumInput
-        caption="Настройка шага"
+        caption='Настройка шага'
         value={step}
         setValue={setStep}
         min={1}
