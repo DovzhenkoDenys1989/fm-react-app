@@ -1,12 +1,13 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route, Link, Router } from 'react-router-dom';
-import UserLoader from './components/UserLoader';
 import WindowSizes from './components/WindowSizes';
 import Counter from './components/PracticeCounter/Counter';
 import CounterPage from './pages/CounterPage';
 import Header from './components/Header';
 import Calendar from './components/Calendar';
+import UserLoader from './components/UserLoader';
+import PhonesLoader from './components/PhonesLoader';
 
 function App (props) {
   return (
@@ -18,6 +19,8 @@ function App (props) {
         <Route path='/about' component={About} />
         <Route path='/counter' component={CounterPage} />
         <Route path='/calendar' component={Calendar} />
+        <Route path='/users' component={UserLoader} />
+        <Route path='/phones' component={PhonesLoader} />
         <Route path='*' component={NotFound} />
       </Switch>
     </BrowserRouter>
@@ -27,7 +30,7 @@ function App (props) {
 const Home = () => <div>HOME</div>;
 const About = props => {
   console.log('ABOUT: ', props);
-  
+
   setTimeout(() => {
     props.history.push('/');
   }, 5000);
@@ -39,6 +42,6 @@ const Contacts = props => {
   return <div>Contacts</div>;
 };
 
-const NotFound = () => <div>Error 404. Page not found.</div>
+const NotFound = () => <div>Error 404. Page not found.</div>;
 
 export default App;

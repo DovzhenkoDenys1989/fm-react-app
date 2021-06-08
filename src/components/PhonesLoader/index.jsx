@@ -1,17 +1,17 @@
 import React from 'react';
-import DataProvider from '../DataProvider';
 import Spinner from '../Spinner';
+import DataProvider from '../DataProvider';
 
-function UserLoader () {
+function PhonesLoader () {
   return (
-    <DataProvider dataLink='/users.json'>
+    <DataProvider dataLink='/phones.json'>
       {({ data, isFetching, error }) => {
         if (!isFetching && data) {
           return (
             <div>
-              {data.map(({ id, name }) => (
+              {data.map(({ id, name, price }) => (
                 <div key={id}>
-                  ID: {id}, NAME: {name}
+                  ID: {id}, NAME: {name}, PRICE: {price}
                 </div>
               ))}
             </div>
@@ -24,4 +24,4 @@ function UserLoader () {
   );
 }
 
-export default UserLoader;
+export default PhonesLoader;
