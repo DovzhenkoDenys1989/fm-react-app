@@ -6,20 +6,18 @@ import WindowSizes from './components/WindowSizes';
 import Counter from './components/PracticeCounter/Counter';
 import CounterPage from './pages/CounterPage';
 import Header from './components/Header';
+import Calendar from './components/Calendar';
 
 function App (props) {
   return (
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path='/contacts'>
-          <Contacts />
-        </Route>
+        <Route exact path='/' component={Home} />
+        <Route path='/contacts' component={Contacts} />
         <Route path='/about' component={About} />
         <Route path='/counter' component={CounterPage} />
+        <Route path='/calendar' component={Calendar} />
         <Route path='*' component={NotFound} />
       </Switch>
     </BrowserRouter>

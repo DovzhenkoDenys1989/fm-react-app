@@ -6,7 +6,7 @@ export default function CalendarHeader () {
   return (
     <div className={style.container}>
       {arrOfDayNames.map(dayName => (
-        <div className={style.weekDayName}>{dayName}</div>
+        <div className={style.weekDayName} key={dayName}>{dayName}</div>
       ))}
     </div>
   );

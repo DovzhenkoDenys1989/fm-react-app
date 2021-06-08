@@ -20,6 +20,7 @@ function Header () {
           <NavItem to='/contacts'>Contacts</NavItem>
           <NavItem to='/about'>About</NavItem>
           <NavItem to='/counter'>Counter</NavItem>
+          <NavItem to='/calendar'>Calendar</NavItem>
         </ul>
       </nav>
     </header>
