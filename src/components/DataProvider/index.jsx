@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 function DataProvider (props) {
-  const { children, dataLink } = props;
+  const { children, loadData } = props;
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
@@ -14,8 +14,7 @@ function DataProvider (props) {
   const load = () => {
     setIsFetching(true);
 
-    fetch(dataLink)
-      .then(res => res.json())
+    loadData()
       .then(data => {
         setData(data);
       })
@@ -28,7 +27,7 @@ function DataProvider (props) {
 
 DataProvider.propTypes = {
   children: PropTypes.func.isRequired,
-  dataLink: PropTypes.string.isRequired,
+  loadData: PropTypes.func.isRequired,
 };
 
 export default DataProvider;

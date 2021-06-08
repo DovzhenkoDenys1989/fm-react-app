@@ -3,8 +3,11 @@ import DataProvider from '../DataProvider';
 import Spinner from '../Spinner';
 
 function UserLoader () {
+  const load = () => {
+    return fetch('/users.json').then(res => res.json());
+  };
   return (
-    <DataProvider dataLink='/users.json'>
+    <DataProvider loadData={load}>
       {({ data, isFetching, error }) => {
         if (!isFetching && data) {
           return (

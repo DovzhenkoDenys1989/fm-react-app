@@ -3,8 +3,11 @@ import Spinner from '../Spinner';
 import DataProvider from '../DataProvider';
 
 function PhonesLoader () {
+  const load = () => {
+    return fetch('/phones.json').then(res => res.json());
+  };
   return (
-    <DataProvider dataLink='/phones.json'>
+    <DataProvider loadData={load}>
       {({ data, isFetching, error }) => {
         if (!isFetching && data) {
           return (
@@ -16,8 +19,8 @@ function PhonesLoader () {
               ))}
             </div>
           );
-        }
-        if (error) return <div>ERROR</div>;
+        } else if (error) return <div>ERROR</div>;
+        
         return <Spinner />;
       }}
     </DataProvider>
