@@ -9,11 +9,13 @@ import Calendar from './components/Calendar';
 import UserLoader from './components/UserLoader';
 import PhonesLoader from './components/PhonesLoader';
 import MouseTrackerPage from './pages/MouseTrackerPage';
+import CatWithMouse from './components/CatWithMouse';
 
 function App (props) {
   return (
     <BrowserRouter>
       <Header />
+      <CatWithMouse />
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/contacts' component={Contacts} />
