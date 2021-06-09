@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Calendar from './components/Calendar';
 import UserLoader from './components/UserLoader';
 import PhonesLoader from './components/PhonesLoader';
+import MouseTrackerPage from './pages/MouseTrackerPage';
 
 function App (props) {
   return (
@@ -21,6 +22,7 @@ function App (props) {
         <Route path='/calendar' component={Calendar} />
         <Route path='/users' component={UserLoader} />
         <Route path='/phones' component={PhonesLoader} />
+        <Route path='/tracker' component={MouseTrackerPage} />
         <Route path='*' component={NotFound} />
       </Switch>
     </BrowserRouter>

@@ -21,6 +21,7 @@ function Header () {
           <NavItem to='/about'>About</NavItem>
           <NavItem to='/counter'>Counter</NavItem>
           <NavItem to='/calendar'>Calendar</NavItem>
+          <NavItem to='/tracker'>Tracker</NavItem>
         </ul>
       </nav>
     </header>
