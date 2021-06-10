@@ -1,11 +1,11 @@
 import React from 'react';
-import MouseTracker from '../../components/MouseTracker';
+import MouseCoordinatesDisplay from '../../components/MouseCoordinatesDisplay';
 
 export default function MouseTrackerPage () {
   return (
     <div>
       <h2>Mouse Tracker</h2>
-      <MouseTracker />
+      <MouseCoordinatesDisplay />
     </div>
   );
 }

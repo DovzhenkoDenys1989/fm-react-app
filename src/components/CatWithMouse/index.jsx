@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import MouseTracker from '../MouseTracker';
 
 function Cat ({ x, y }) {
   const styles = {
     width: '50px',
     objectFit: 'cover',
     position: 'fixed',
-    top: `${y+2}px`,
-    left: `${x+2}px`,
+    top: `${y + 2}px`,
+    left: `${x + 2}px`,
     userSelect: 'none',
   };
 
@@ -19,23 +20,6 @@ function Cat ({ x, y }) {
   );
 }
 
-function CatWithMouse () {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-
-  useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const handleMouseMove = event => {
-    setX(event.clientX);
-    setY(event.clientY);
-  };
-
-  return (
-      <Cat x={x} y={y}/>
-  );
-}
+const CatWithMouse = () => <MouseTracker>{Cat}</MouseTracker>;
 
 export default CatWithMouse;

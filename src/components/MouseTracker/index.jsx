@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-function MouseTracker () {
+function MouseTracker ({ children }) {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
@@ -14,47 +15,11 @@ function MouseTracker () {
     setY(event.clientY);
   };
 
-  return (
-    <div style={{ height: '100vh' }}>
-      <h1>Перемещайте курсор мыши!</h1>
-      <p>
-        Текущее положение курсора мыши: ({x}, {y})
-      </p>
-    </div>
-  );
+  return children({ x, y });
 }
-/*
-class MouseTracker extends Component {
-  constructor (props) {
-    super(props);
-    this.state = { x: 0, y: 0 };
-  }
 
-  componentDidMount () {
-    document.addEventListener('mousemove', this.handleMouseMove);
-  }
+MouseTracker.propTypes = {
+  children: PropTypes.func.isRequired,
+};
 
-  componentWillUnmount () {
-    document.removeEventListener('mousemove', this.handleMouseMove);
-  }
-
-  handleMouseMove = event => {
-    this.setState({
-      x: event.clientX,
-      y: event.clientY,
-    });
-  };
-
-  render () {
-    return (
-      <div style={{ height: '100vh' }}>
-        <h1>Перемещайте курсор мыши!</h1>
-        <p>
-          Текущее положение курсора мыши: ({this.state.x}, {this.state.y})
-        </p>
-      </div>
-    );
-  }
-}
-*/
 export default MouseTracker;

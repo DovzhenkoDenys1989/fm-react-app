@@ -15,7 +15,7 @@ function App (props) {
   return (
     <BrowserRouter>
       <Header />
-      <CatWithMouse />
+      {/*<CatWithMouse />*/}
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/contacts' component={Contacts} />
