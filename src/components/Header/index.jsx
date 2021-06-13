@@ -1,10 +1,14 @@
 import React from 'react';
+import cx from 'classnames';
 import style from './Header.module.sass';
 import NavItem from './NavItem';
-import { UserContext } from '../../contexts';
+import withTheme from '../HOCs/withTheme';
+import { UserContext, ThemeContext } from '../../contexts';
 import UserContainer from './UserContainer';
+import CONSTANTS from '../../constants';
+const { THEMES } = CONSTANTS;
 
-function Header () {
+function Header ({ theme, setTheme }) {
   /*
      1. Сделать навигационное меню с использованием Link или NavLink
      2. Стилизовать навигационное меню
@@ -14,8 +18,12 @@ function Header () {
       3.3 CounterPage (с использованием компонента Counter)
       3.4 NotFoundPage (Ошибка 404)
   */
+  const classes = cx(style.header, {
+    [style.lightTheme]: theme === THEMES.LIGHT,
+    [style.darkTheme]: theme === THEMES.DARK,
+  });
   return (
-    <header className={style.header}>
+    <header className={classes}>
       <nav className={style.navMenu}>
         <ul className={style.navList}>
           <NavItem to='/'>Home</NavItem>
@@ -33,4 +41,4 @@ function Header () {
   );
 }
 
-export default Header;
+export default withTheme(Header);

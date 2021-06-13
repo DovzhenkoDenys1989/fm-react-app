@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route, Link, Router } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import WindowSizes from './components/WindowSizes';
 import Counter from './components/PracticeCounter/Counter';
 import CounterPage from './pages/CounterPage';
@@ -9,39 +9,44 @@ import Calendar from './components/Calendar';
 import UserLoader from './components/UserLoader';
 import PhonesLoader from './components/PhonesLoader';
 import MouseTrackerPage from './pages/MouseTrackerPage';
-import CatWithMouse from './components/CatWithMouse';
-import UserPage from './pages/UserPage';
 import Tree from './components/Tree';
-import { UserContext } from './contexts';
+import { UserContext, ThemeContext } from './contexts';
+
+import CONSTANTS from './constants';
+const { THEMES } = CONSTANTS;
 
 console.log(UserContext);
 
 function App (props) {
-  const user = {
+  const [user, etUser] = useState({
     id: 1,
     firstname: 'John',
     lastname: 'Doe',
     age: 30,
     email: 'johndoe@gmail.com',
     imageSrc: 'https://i.ytimg.com/vi/L3wKzyIN1yk/maxresdefault.jpg',
-  };
+  });
+  const [theme, setTheme] = useState(THEMES.DARK);
+
   return (
     <BrowserRouter>
-      <UserContext.Provider value={user}>
-        <Header />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/contacts' component={Contacts} />
-          <Route path='/about' component={About} />
-          <Route path='/counter' component={CounterPage} />
-          <Route path='/calendar' component={Calendar} />
-          <Route path='/users' component={UserLoader} />
-          <Route path='/phones' component={PhonesLoader} />
-          <Route path='/tracker' component={MouseTrackerPage} />
-          <Route path='/user' component={Tree} />
-          <Route path='*' component={NotFound} />
-        </Switch>
-      </UserContext.Provider>
+      <ThemeContext.Provider value={[theme, setTheme]}>
+        <UserContext.Provider value={user}>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/contacts' component={Contacts} />
+            <Route path='/about' component={About} />
+            <Route path='/counter' component={CounterPage} />
+            <Route path='/calendar' component={Calendar} />
+            <Route path='/users' component={UserLoader} />
+            <Route path='/phones' component={PhonesLoader} />
+            <Route path='/tracker' component={MouseTrackerPage} />
+            <Route path='/user' component={Tree} />
+            <Route path='*' component={NotFound} />
+          </Switch>
+        </UserContext.Provider>
+      </ThemeContext.Provider>
     </BrowserRouter>
   );
 }
