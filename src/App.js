@@ -14,6 +14,7 @@ import Home from './pages/Home';
 import { UserContext, ThemeContext } from './contexts';
 
 import CONSTANTS from './constants';
+import onlyAdmin from './components/HOCs/onlyAdmin';
 const { THEMES } = CONSTANTS;
 
 console.log(UserContext);
@@ -26,6 +27,7 @@ function App (props) {
     age: 30,
     email: 'johndoe@gmail.com',
     imageSrc: 'https://i.ytimg.com/vi/L3wKzyIN1yk/maxresdefault.jpg',
+    isAdmin: true,
   });
   const themeState = useState(THEMES.DARK);
 
@@ -44,6 +46,7 @@ function App (props) {
             <Route path='/phones' component={PhonesLoader} />
             <Route path='/tracker' component={MouseTrackerPage} />
             <Route path='/user' component={Tree} />
+            <Route path='/admin' component={onlyAdmin(AdminPage)} />
             <Route path='*' component={NotFound} />
           </Switch>
         </UserContext.Provider>
@@ -51,6 +54,11 @@ function App (props) {
     </BrowserRouter>
   );
 }
+
+const AdminPage = props => {
+  return <div>ADMIN PAGE</div>;
+};
+
 const About = props => {
   console.log('ABOUT: ', props);
 
