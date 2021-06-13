@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { WbSunny, Brightness3 } from '@material-ui/icons';
 import style from './Header.module.sass';
 import NavItem from './NavItem';
 import withTheme from '../HOCs/withTheme';
@@ -19,13 +20,13 @@ function Header ({ theme, setTheme }) {
       3.3 CounterPage (с использованием компонента Counter)
       3.4 NotFoundPage (Ошибка 404)
   */
+  const isLightMode = theme === THEMES.LIGHT;
   const classes = cx(style.header, {
-    [style.lightTheme]: theme === THEMES.LIGHT,
+    [style.lightTheme]: isLightMode,
     [style.darkTheme]: theme === THEMES.DARK,
   });
 
-  const toggleTheme = () =>
-    setTheme(theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT);
+  const toggleTheme = () => setTheme(isLightMode ? THEMES.DARK : THEMES.LIGHT);
 
   return (
     <header className={classes}>
@@ -39,7 +40,9 @@ function Header ({ theme, setTheme }) {
           <NavItem to='/tracker'>Tracker</NavItem>
         </ul>
       </nav>
-      <Button caption='Change theme' onClick={toggleTheme}></Button>
+      <Button onClick={toggleTheme}>
+        {isLightMode ? <WbSunny style={{color: '#FFD500'}} /> : <Brightness3 />}
+      </Button>
       <UserContext.Consumer>
         {user => <UserContainer user={user} />}
       </UserContext.Consumer>

@@ -72,9 +72,9 @@ class Counter extends Component {
           />
           <p>Auto click mode: {isAutoClick ? 'Enabled' : 'Disabled'}</p>
           <div className={style.controls}>
-            <Button onClick={this.toggleMode} caption={'Change mode'} />
-            <Button onClick={this.handleCount} caption={countButtonCaption} />
-            <Button onClick={this.toggleAutoClick} caption='Auto click' />
+            <Button onClick={this.toggleMode}>Change mode</Button>
+            <Button onClick={this.handleCount}>{countButtonCaption}</Button>
+            <Button onClick={this.toggleAutoClick}>Auto click</Button>
           </div>
         </div>
       </>
