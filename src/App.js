@@ -26,11 +26,11 @@ function App (props) {
     email: 'johndoe@gmail.com',
     imageSrc: 'https://i.ytimg.com/vi/L3wKzyIN1yk/maxresdefault.jpg',
   });
-  const [theme, setTheme] = useState(THEMES.DARK);
+  const themeState = useState(THEMES.DARK);
 
   return (
     <BrowserRouter>
-      <ThemeContext.Provider value={[theme, setTheme]}>
+      <ThemeContext.Provider value={themeState}>
         <UserContext.Provider value={user}>
           <Header />
           <Switch>

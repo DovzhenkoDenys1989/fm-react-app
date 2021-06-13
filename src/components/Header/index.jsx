@@ -3,9 +3,10 @@ import cx from 'classnames';
 import style from './Header.module.sass';
 import NavItem from './NavItem';
 import withTheme from '../HOCs/withTheme';
-import { UserContext, ThemeContext } from '../../contexts';
+import { UserContext } from '../../contexts';
 import UserContainer from './UserContainer';
 import CONSTANTS from '../../constants';
+import Button from '../Button';
 const { THEMES } = CONSTANTS;
 
 function Header ({ theme, setTheme }) {
@@ -22,6 +23,10 @@ function Header ({ theme, setTheme }) {
     [style.lightTheme]: theme === THEMES.LIGHT,
     [style.darkTheme]: theme === THEMES.DARK,
   });
+
+  const toggleTheme = () =>
+    setTheme(theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT);
+
   return (
     <header className={classes}>
       <nav className={style.navMenu}>
@@ -34,6 +39,7 @@ function Header ({ theme, setTheme }) {
           <NavItem to='/tracker'>Tracker</NavItem>
         </ul>
       </nav>
+      <Button caption='Change theme' onClick={toggleTheme}></Button>
       <UserContext.Consumer>
         {user => <UserContainer user={user} />}
       </UserContext.Consumer>
