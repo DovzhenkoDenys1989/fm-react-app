@@ -10,23 +10,38 @@ import UserLoader from './components/UserLoader';
 import PhonesLoader from './components/PhonesLoader';
 import MouseTrackerPage from './pages/MouseTrackerPage';
 import CatWithMouse from './components/CatWithMouse';
+import UserPage from './pages/UserPage';
+import Tree from './components/Tree';
+import { UserContext } from './contexts';
+
+console.log(UserContext);
 
 function App (props) {
+  const user = {
+    id: 1,
+    firstname: 'John',
+    lastname: 'Doe',
+    age: 30,
+    email: 'johndoe@gmail.com',
+    imageSrc: 'https://i.ytimg.com/vi/L3wKzyIN1yk/maxresdefault.jpg',
+  };
   return (
     <BrowserRouter>
-      <Header />
-      {/*<CatWithMouse />*/}
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/contacts' component={Contacts} />
-        <Route path='/about' component={About} />
-        <Route path='/counter' component={CounterPage} />
-        <Route path='/calendar' component={Calendar} />
-        <Route path='/users' component={UserLoader} />
-        <Route path='/phones' component={PhonesLoader} />
-        <Route path='/tracker' component={MouseTrackerPage} />
-        <Route path='*' component={NotFound} />
-      </Switch>
+      <UserContext.Provider value={user}>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/contacts' component={Contacts} />
+          <Route path='/about' component={About} />
+          <Route path='/counter' component={CounterPage} />
+          <Route path='/calendar' component={Calendar} />
+          <Route path='/users' component={UserLoader} />
+          <Route path='/phones' component={PhonesLoader} />
+          <Route path='/tracker' component={MouseTrackerPage} />
+          <Route path='/user' component={Tree} />
+          <Route path='*' component={NotFound} />
+        </Switch>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }

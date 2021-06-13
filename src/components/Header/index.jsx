@@ -1,6 +1,8 @@
 import React from 'react';
 import style from './Header.module.sass';
 import NavItem from './NavItem';
+import { UserContext } from '../../contexts';
+import UserContainer from './UserContainer';
 
 function Header () {
   /*
@@ -24,6 +26,9 @@ function Header () {
           <NavItem to='/tracker'>Tracker</NavItem>
         </ul>
       </nav>
+      <UserContext.Consumer>
+        {user => <UserContainer user={user} />}
+      </UserContext.Consumer>
     </header>
   );
 }
