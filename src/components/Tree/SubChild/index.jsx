@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import UserCard from '../../UserCard';
 import { UserContext } from '../../../contexts';
 
@@ -7,11 +7,10 @@ function SubChild (props) {
     border: '3px solid',
     padding: '20px',
   };
+  const user = useContext(UserContext);
   return (
     <div style={style}>
-      <UserContext.Consumer>
-        {user => <UserCard user={user} />}
-      </UserContext.Consumer>
+      <UserCard user={user} />
     </div>
   );
 }
