@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cx from 'classnames';
 import { WbSunny, Brightness3 } from '@material-ui/icons';
 import style from './Header.module.sass';
@@ -27,7 +27,7 @@ function Header ({ theme, setTheme }) {
   });
 
   const toggleTheme = () => setTheme(isLightMode ? THEMES.DARK : THEMES.LIGHT);
-
+  const user = useContext(UserContext);
   return (
     <header className={classes}>
       <nav className={style.navMenu}>
@@ -41,11 +41,13 @@ function Header ({ theme, setTheme }) {
         </ul>
       </nav>
       <Button onClick={toggleTheme}>
-        {isLightMode ? <WbSunny style={{color: '#FFD500'}} /> : <Brightness3 />}
+        {isLightMode ? (
+          <WbSunny style={{ color: '#FFD500' }} />
+        ) : (
+          <Brightness3 />
+        )}
       </Button>
-      <UserContext.Consumer>
-        {user => <UserContainer user={user} />}
-      </UserContext.Consumer>
+      <UserContainer user={user} />
     </header>
   );
 }
