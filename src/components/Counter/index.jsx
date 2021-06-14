@@ -15,6 +15,23 @@ function Counter (props) {
   const { step } = props;
   console.log('render');
 
+  const [counter, setCounter] = useState(0);
+  const [isIncrement, setIsIncrement] = useState(true);
+  const [isAutoClick, setIsAutoClick] = useState(false);
+  const [delay, setDelay] = useState(1000);
+  const [clicksPerSecond, setClicksPerSecond] = useState(1);
+  const [timer, setTimer] = useState(null);
+
+  useEffect(() => {
+    if (isAutoClick) {
+      setTimer(setTimeout(handleCount, delay));
+    }
+  }, [isIncrement, isAutoClick, delay, step, counter]);
+
+  useEffect(() => {
+    clearTimeout(timer);
+  }, [isIncrement, delay, step, isAutoClick]);
+
   const toggleMode = useCallback(() => setIsIncrement(!isIncrement), [
     isIncrement,
   ]);
@@ -33,27 +50,11 @@ function Counter (props) {
     setDelay(1000 / newValue);
   }, []);
 
-  const [counter, setCounter] = useState(0);
-  const [isIncrement, setIsIncrement] = useState(true);
-  const [isAutoClick, setIsAutoClick] = useState(false);
-  const [delay, setDelay] = useState(1000);
-  const [clicksPerSecond, setClicksPerSecond] = useState(1);
-  const [timer, setTimer] = useState(null);
-
-  useEffect(() => {
-    if (isAutoClick) {
-      setTimer(setTimeout(handleCount, delay));
-    }
-  }, [isIncrement, isAutoClick, delay, step, counter]);
-
-  useEffect(() => {
-    clearTimeout(timer);
-  }, [isIncrement, delay, step, isAutoClick]);
-
   const countButtonCaption = useMemo(
     () => (isIncrement ? 'Increment' : 'Decrement'),
     [isIncrement]
   );
+
   return (
     <>
       <div className={style.container}>
@@ -67,9 +68,9 @@ function Counter (props) {
         />
         <p>Auto click mode: {isAutoClick ? 'Enabled' : 'Disabled'}</p>
         <div className={style.controls}>
-          <Button onClick={toggleMode} caption={'Change mode'} />
-          <Button onClick={handleCount} caption={countButtonCaption} />
-          <Button onClick={toggleAutoClick} caption='Auto click' />
+          <Button onClick={toggleMode}>Change mode</Button>
+          <Button onClick={handleCount}>{countButtonCaption}</Button>
+          <Button onClick={toggleAutoClick}>Auto click</Button>
         </div>
       </div>
     </>
