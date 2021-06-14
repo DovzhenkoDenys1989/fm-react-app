@@ -20,7 +20,7 @@ const { THEMES } = CONSTANTS;
 console.log(UserContext);
 
 function App (props) {
-  const [user, etUser] = useState({
+  const [user, setUser] = useState({
     id: 1,
     firstname: 'John',
     lastname: 'Doe',
