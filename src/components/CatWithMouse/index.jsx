@@ -1,7 +1,8 @@
 import React from 'react';
-import MouseTracker from '../MouseTracker';
+import { useMouse } from '../../hooks';
 
-function Cat ({ x, y }) {
+function CatWithMouse () {
+  const { x, y } = useMouse();
   const styles = {
     width: '50px',
     objectFit: 'cover',
@@ -19,7 +20,5 @@ function Cat ({ x, y }) {
     />
   );
 }
-
-const CatWithMouse = () => <MouseTracker>{Cat}</MouseTracker>;
 
 export default CatWithMouse;
