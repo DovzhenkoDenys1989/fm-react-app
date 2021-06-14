@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react';
+import React, { useContext, useState, useMemo, useCallback } from 'react';
 import cx from 'classnames';
 import style from './Home.module.sass';
 import { ThemeContext } from '../../contexts';
@@ -13,29 +13,31 @@ function Home () {
   const [theme] = useContext(ThemeContext);
   const [value, setValue] = useState(1);
 
-  const count = useCallback(() => {
+  const preCount = useMemo(() => {
     let i = 0;
-    for (let j = 0; j < 100; j++) {
+    for (let j = 0; j < 1000000000; j++) {
+      i += j;
+    }
+    return i;
+  }, []);
+
+  const count = useCallback(value => preCount ** value, [value]);
+
+  /*const count = useCallback((value) => {
+    let i = 0;
+    for (let j = 0; j < 1000000000; j++) {
       i += j;
     }
     return i ** value;
-  }, [value]);
+  }, [value]);*/
 
-  const logger = useCallback(() => {
-    console.log(value);
-  }, []);
-
-  logger();
-
-  useEffect(() => {
-    console.log('function changed');
-  }, [logger]);
+  const currentValue = useMemo(() => count(value), [value]);
 
   const classes = cx(style.container, {
     [style.lightTheme]: theme === THEMES.LIGHT,
     [style.darkTheme]: theme === THEMES.DARK,
   });
-  const currentValue = count();
+
   return (
     <div className={classes}>
       <h1>HOME PAGE</h1>

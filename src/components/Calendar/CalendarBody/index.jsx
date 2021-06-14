@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import style from './CalendarBody.module.sass';
 import {
   startOfMonth,
   endOfMonth,
@@ -10,6 +9,7 @@ import {
   addYears,
   subYears
 } from 'date-fns';
+import style from './CalendarBody.module.sass';
 import Week from './Week';
 import CalendarHeader from './CalendarHeader';
 import CalendarControls from './CalendarControls';
