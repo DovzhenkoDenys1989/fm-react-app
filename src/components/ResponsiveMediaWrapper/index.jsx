@@ -3,10 +3,14 @@ import style from './ResponsiveMediaWrapper.module.sass';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
-function ResponsiveMediaWrapper ({ className, children, ...restProps }) {
+function ResponsiveMediaWrapper ({ className, children, rate, ...restProps }) {
+  const inlineStyle = {
+    paddingTop: rate ? `calc(100% * ${rate})` : 'calc(100% * 9 / 16)',
+  };
+
   return (
     <div className={cx(style.outerWrapper, className)} {...restProps}>
-      <div className={style.innerWrapper}>{children}</div>
+      <div className={style.innerWrapper} style={inlineStyle}>{children}</div>
     </div>
   );
 }

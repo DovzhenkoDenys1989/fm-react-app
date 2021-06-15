@@ -16,6 +16,8 @@ import { UserContext, ThemeContext } from './contexts';
 import CONSTANTS from './constants';
 import onlyAdmin from './components/HOCs/onlyAdmin';
 import CatWithMouse from './components/CatWithMouse';
+import SignUpPage from './pages/SignUpPage';
+import Chat from './components/Chat';
 const { THEMES } = CONSTANTS;
 
 console.log(UserContext);
@@ -37,9 +39,11 @@ function App (props) {
       <ThemeContext.Provider value={themeState}>
         <UserContext.Provider value={user}>
           <Header />
-          <CatWithMouse />
+          {/* <CatWithMouse />*/}
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route path='/signUp' component={SignUpPage} />
+            <Route path='/chat' component={Chat} />
             <Route path='/contacts' component={Contacts} />
             <Route path='/about' component={About} />
             <Route path='/counter' component={CounterPage} />
