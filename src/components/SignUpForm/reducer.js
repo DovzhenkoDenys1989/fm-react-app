@@ -1,10 +1,8 @@
 export const reducer = (state, action) => {
   const { name, value } = action;
 
-  const newState = {
+  return {
     ...state,
     [name]: value,
   };
-
-  return newState;
 };

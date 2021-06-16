@@ -18,12 +18,10 @@ export const reducer = (state, action) => {
       const usersMap = new Map();
       users.forEach(user => usersMap.set(user.id, user));
 
-      const messagesWithAuthors = messages.map(msg => {
-        return {
-          ...msg,
-          author: usersMap.get(msg.authorId),
-        };
-      });
+      const messagesWithAuthors = messages.map(msg => ({
+        ...msg,
+        author: usersMap.get(msg.authorId),
+      }));
 
       return {
         ...state,
