@@ -1,46 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import Spinner from '../Spinner';
-
-const initialState = {
-  isFetching: false,
-  data: {
-    messages: [],
-    users: [],
-  },
-  error: null,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'DATA_RESPONSE_REQUEST':
-      return { ...initialState, isFetching: true };
-    case 'DATA_RESPONSE_SUCCESS': {
-      const {
-        data: { users, messages },
-      } = action;
-      const usersMap = new Map();
-      users.forEach(user => usersMap.set(user.id, user));
-
-      const messagesWithAuthors = messages.map(msg => {
-        return {
-          ...msg,
-          author: usersMap.get(msg.authorId),
-        };
-      });
-
-      return {
-        ...state,
-        data: {
-          users,
-          messages: messagesWithAuthors,
-        },
-        isFetching: false,
-      };
-    }
-    case 'DATA_RESPONSE_ERROR':
-      return { ...state, isFetching: false, error: action.error };
-  }
-};
+import { initialState, reducer} from './reducer';
 
 function Chat (props) {
   const [state, dispatch] = useReducer(reducer, initialState);

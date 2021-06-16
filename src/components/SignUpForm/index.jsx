@@ -2,23 +2,13 @@ import React, { useReducer } from 'react';
 import style from './SignUpForm.module.scss';
 import FormInput from './FormInput';
 import constants from '../../constants';
+import { reducer } from './reducer';
 
 const initialValues = {
   firstname: '',
   lastname: '',
   email: '',
   password: '',
-};
-
-const reducer = (state, action) => {
-  const { name, value } = action;
-
-  const newState = {
-    ...state,
-    [name]: value,
-  };
-
-  return newState;
 };
 
 function SignUpForm (props) {
