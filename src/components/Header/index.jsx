@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import cx from 'classnames';
 import { WbSunny, Brightness3 } from '@material-ui/icons';
 import style from './Header.module.sass';
-import NavItem from './NavItem';
+import NavItem from '../NavItem';
 import withTheme from '../HOCs/withTheme';
 import { UserContext } from '../../contexts';
 import UserContainer from './UserContainer';

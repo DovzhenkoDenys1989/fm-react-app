@@ -1,10 +1,8 @@
-import './App.css';
+import style from './App.module.sass';
 import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import WindowSizes from './components/WindowSizes';
 import Counter from './components/PracticeCounter/Counter';
 import CounterPage from './pages/CounterPage';
-import Header from './components/Header';
 import Calendar from './components/Calendar';
 import UserLoader from './components/UserLoader';
 import PhonesLoader from './components/PhonesLoader';
@@ -15,9 +13,9 @@ import { UserContext, ThemeContext } from './contexts';
 
 import CONSTANTS from './constants';
 import onlyAdmin from './components/HOCs/onlyAdmin';
-import CatWithMouse from './components/CatWithMouse';
 import SignUpPage from './pages/SignUpPage';
 import Chat from './components/Chat';
+import NavMenu from './components/NavMenu';
 const { THEMES } = CONSTANTS;
 
 console.log(UserContext);
@@ -36,25 +34,26 @@ function App (props) {
 
   return (
     <BrowserRouter>
+      <NavMenu />
       <ThemeContext.Provider value={themeState}>
         <UserContext.Provider value={user}>
-          <Header />
-          {/* <CatWithMouse />*/}
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/signUp' component={SignUpPage} />
-            <Route path='/chat' component={Chat} />
-            <Route path='/contacts' component={Contacts} />
-            <Route path='/about' component={About} />
-            <Route path='/counter' component={CounterPage} />
-            <Route path='/calendar' component={Calendar} />
-            <Route path='/users' component={UserLoader} />
-            <Route path='/phones' component={PhonesLoader} />
-            <Route path='/tracker' component={MouseTrackerPage} />
-            <Route path='/user' component={Tree} />
-            <Route path='/admin' component={onlyAdmin(AdminPage)} />
-            <Route path='*' component={NotFound} />
-          </Switch>
+          <div className={style.pageWrapper}>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/signUp' component={SignUpPage} />
+              <Route path='/chat' component={Chat} />
+              <Route path='/contacts' component={Contacts} />
+              <Route path='/about' component={About} />
+              <Route path='/counter' component={CounterPage} />
+              <Route path='/calendar' component={Calendar} />
+              <Route path='/users' component={UserLoader} />
+              <Route path='/phones' component={PhonesLoader} />
+              <Route path='/tracker' component={MouseTrackerPage} />
+              <Route path='/user' component={Tree} />
+              <Route path='/admin' component={onlyAdmin(AdminPage)} />
+              <Route path='*' component={NotFound} />
+            </Switch>
+          </div>
         </UserContext.Provider>
       </ThemeContext.Provider>
     </BrowserRouter>
