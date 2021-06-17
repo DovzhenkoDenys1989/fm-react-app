@@ -11,7 +11,7 @@ import Tree from 'components/Tree';
 import Home from 'pages/Home';
 import { UserContext, ThemeContext } from './contexts';
 
-import CONSTANTS from 'constants';
+import CONSTANTS from 'constants.js';
 import onlyAdmin from 'components/HOCs/onlyAdmin';
 import SignUpPage from 'pages/SignUpPage';
 import Chat from 'components/Chat';
