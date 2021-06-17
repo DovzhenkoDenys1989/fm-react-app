@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import SortedAlohaList from './SortedAlohaList';
-import SignUpForm from '../SignUpForm';
+import SignUpForm from 'components/SignUpForm';
 
 class AlohaDashboard extends Component {
   constructor (props) {

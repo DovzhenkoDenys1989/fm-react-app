@@ -1,7 +1,7 @@
 import React from 'react';
 import DataProvider from '../DataProvider';
 import Spinner from '../Spinner';
-import { useData } from '../../hooks';
+import { useData } from 'hooks';
 
 function UserLoader () {
   const load = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './Step.module.sass';
-import ControlledNumInput from '../../../components/ControlledNumInput';
+import ControlledNumInput from 'components/ControlledNumInput';
 function Step (props) {
   const { step, setStep } = props;
   return (

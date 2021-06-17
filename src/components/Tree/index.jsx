@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Parent from './Parent';
 import withTheme from '../HOCs/withTheme';
 import style from './Tree.module.sass';
-import CONSTANTS from '../../constants';
+import CONSTANTS from 'constants';
 const { THEMES } = CONSTANTS;
 
 function Tree (props) {

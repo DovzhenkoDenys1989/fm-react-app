@@ -1,8 +1,8 @@
 import React, { useState, Component, PureComponent } from 'react';
-import Counter from '../../components/Counter';
+import Counter from 'components/Counter';
 import Step from './Step';
 import style from './CounterPage.module.sass';
-import Button from '../../components/Button';
+import Button from 'components/Button';
 
 class CounterPage extends Component {
   state = {

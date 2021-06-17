@@ -6,8 +6,8 @@ import React, {
   Component,
   PureComponent,
 } from 'react';
-import Button from '../Button';
-import ControlledNumInput from '../ControlledNumInput';
+import Button from 'components/Button';
+import ControlledNumInput from 'components/ControlledNumInput';
 
 import style from './Counter.module.sass';
 

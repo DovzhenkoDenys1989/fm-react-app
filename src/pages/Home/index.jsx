@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import cx from 'classnames';
 import style from './Home.module.sass';
-import { ThemeContext } from '../../contexts';
-import CONSTANTS from '../../constants';
+import { ThemeContext } from 'contexts';
+import CONSTANTS from 'constants';
 const { THEMES } = CONSTANTS;
 
 /*
