@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import style from './SignUpForm.module.scss';
 import FormInput from './FormInput';
-import constants from '../../constants';
+import constants from '../../../constants';
 import { reducer } from './reducer';
 
 const initialValues = {

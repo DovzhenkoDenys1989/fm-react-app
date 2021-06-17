@@ -4,22 +4,18 @@ import style from './FormInput.module.scss';
 
 export default function FormInput (props) {
   const {
-    name,
     value,
     onChange = () => {},
     validationRegex,
-    placeholder,
-    type = 'text',
+    ...other
   } = props;
   const isValid = value.length === 0 || validationRegex.test(value);
   return (
     <input
-      name={name}
       value={value}
       onChange={onChange}
       className={cx(style.input, { [style.invalidInput]: !isValid })}
-      type={type}
-      placeholder={placeholder}
+      {...other}
     />
   );
 }
