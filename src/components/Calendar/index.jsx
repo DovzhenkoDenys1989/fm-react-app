@@ -6,8 +6,10 @@ import CurrentDay from './CurrentDay';
 export default function Calendar() {
   return (
     <div className={style.container}>
+      <div className={style.innerWrapper}>
       <CurrentDay />
       <CalendarBody />
+      </div>
     </div>
     );
   

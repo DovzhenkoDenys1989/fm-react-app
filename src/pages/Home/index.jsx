@@ -20,6 +20,11 @@ function Home () {
   return (
     <div className={classes}>
       <h1>HOME PAGE</h1>
+      <h2 className={style.hello}>Hello World REACT JS</h2>
+      <img className={style.img}
+        src='https://images.theconversation.com/files/378097/original/file-20210111-23-bqsfwl.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop'
+        alt='World'
+      />
     </div>
   );
 }

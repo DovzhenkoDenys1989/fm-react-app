@@ -7,7 +7,7 @@ import {
   addMonths,
   subMonths,
   addYears,
-  subYears
+  subYears,
 } from 'date-fns';
 import style from './CalendarBody.module.sass';
 import Week from './Week';
@@ -42,7 +42,7 @@ function CalendarBody () {
   ));
   return (
     <div className={style.container}>
-      <h3>{format(currentDate, 'MMMM yyyy')}</h3>
+      <h3 className={style.titleMonthYear}>{format(currentDate, 'MMMM yyyy')}</h3>
       <CalendarControls
         openPrevMonth={openPrevMonth}
         openNextMonth={openNextMonth}

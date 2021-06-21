@@ -32,12 +32,12 @@ function Header ({ theme, setTheme }) {
     <header className={classes}>
       <nav className={style.navMenu}>
         <ul className={style.navList}>
-          <NavItem to='/'>Home</NavItem>
-          <NavItem to='/contacts'>Contacts</NavItem>
-          <NavItem to='/about'>About</NavItem>
-          <NavItem to='/counter'>Counter</NavItem>
-          <NavItem to='/calendar'>Calendar</NavItem>
-          <NavItem to='/tracker'>Tracker</NavItem>
+          <NavItem className={style.navItem} to='/'>Home</NavItem>
+          <NavItem className={style.navItem} to='/contacts'>Contacts</NavItem>
+          <NavItem className={style.navItem} to='/about'>About</NavItem>
+          <NavItem className={style.navItem} to='/counter'>Counter</NavItem>
+          <NavItem className={style.navItem} to='/calendar'>Calendar</NavItem>
+          <NavItem className={style.navItem} to='/tracker'>Tracker</NavItem>
         </ul>
       </nav>
       <Button onClick={toggleTheme}>
